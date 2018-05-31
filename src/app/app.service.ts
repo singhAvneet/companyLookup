@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class AppService {
     // private greetUrl = 'http://singhavneet.000webhostapp.com/vote/api.php/?party=Conservative&month=may&email=';
-private greetUrl='/list_pets';
+private greetUrl='https://company-look-up.herokuapp.com/list_pets';
     // private greetUrl='https://freegeoip.net/json/';
 
     // Resolve HTTP using the constructor
