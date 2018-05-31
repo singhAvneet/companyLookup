@@ -1,19 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import {FormsModule} from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
+import { AppService } from './app.service';
+
+import { ContactComponent } from './contact/contact.component';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    ContactComponent,
+
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpModule,
+    FormsModule,
+    Ng2CarouselamosModule,
+    // appRoutiingModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,43 @@
+@import '~bootstrap/scss/bootstrap';
+@import 'app/variable';
+
+p,h4,h2,li,.container-fluid{
+    color: $--main-bg-color;
+}
+footer{
+    p{color:white}
+}
+.navbar-collapse .navbar-nav li.active a{
+    background-color:white!important
+}
+
+p{
+  font-size: 12px  
+}
+@media screen and (min-width: 480px) {
+    p{
+        font-size: 15px  
+      }
+
+}
+
+.statcounter{
+    img{display:none}
+}
+
+.iframContainer {
+    width:22em;
+    input{
+        width:100%;
+        @media screen and (min-width: 480px) {
+            width:20%
+        
+        }
+    }
+}
+
+// #myiframe {
+//     width:100%;
+//     height:420px; 
+//     overflow:hidden; 
+// }

@@ -1,39 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-// import { Observable } from 'rxjs/Rx';
+import { Component,OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Http, Response } from '@angular/http';
 
-// Import RxJs required methods
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+export class AppComponent implements OnInit {
+  title = 'hello from angular app';
+  author='© 2018 by Avneet Singh. ';
+  constructor(private _appService: AppService) { }
 
-export class AppComponent  {
+  ngOnInit(): void {
+    
+    // this._appService.sayHello()
+    //   .subscribe(
+    //   result => {
+    //     alert(result.region_code);
+       
+    //   }
+    //   );
+  }
 
+tabSelected='contact';
+onNavigate(tab:string){
+  
+this.tabSelected=tab;
+  }
 
+ 
+  onClickbody() {
+    var el = document.getElementById('myNavbar');
+    // var navEl = document.getElementById('navClass');
+    el.setAttribute("style", "display:none;");
 
-
-// private greetUrl='https://company-look-up.herokuapp.com/list_pets';
-    private greetUrl='https://freegeoip.net/json/';
-data:any={};
-
-    constructor(private _http: Http) {
-this.getContacts();this.getData();
-
-     }
-
-getData(){
-  return this._http.get(this.greetUrl).map((res:Response)=>res.json())
-}
-getContacts(){
-  this.getData().subscribe(data=>{alert(data);this.data=data})
-
-}
+  }
 
 
 }
