@@ -1,24 +1,8 @@
 
 
-  <title>{{title}}</title>
-  <div  id="test" >
-    
-
-  <div id="bodyDiv" (click)="onClickbody()" >
-  <!-- <router-outlet ></router-outlet> -->
+<app-menu (tabSelected)="onNavigate($event)"></app-menu>
 
 
-
-<app-contact *ngIf="tabSelected ==='contact'"></app-contact>
-</div>
-<footer class="navbar-fixed-bottom text-center">
- <!--href="#myPage" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
-  </a>-->
-  <p>{{author}} </p>
-</footer>
-</div>
-
-
-
+<app-contact *ngIf="tabSelected ==='newcompany'"></app-contact>
+ 
 

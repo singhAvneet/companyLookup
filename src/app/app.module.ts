@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 
 import { ContactComponent } from './contact/contact.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 
@@ -18,6 +19,8 @@ import { ContactComponent } from './contact/contact.component';
     AppComponent,
 
     ContactComponent,
+
+    MenuComponent,
 
   ],
   imports: [

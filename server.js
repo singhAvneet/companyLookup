@@ -64,37 +64,26 @@ res.sendFile(path.join(__dirname+'/dist/index.html'));
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
 
-//  .get('/process_get', function (req, res) {
-//   // Prepare output in JSON format
-//    sql="INSERT INTO `heroku_a8b56c41d8ac0e1`.`pet` (`name`,`type`,`breed`,`location`,`lat`,`longi`)VALUES('"+req.query.name+"','"+req.query.type+"','"+req.query.breed+"','"+req.query.location+"','"+req.query.latitude+"','"+req.query.longitude+"');  ";
-//    con.getConnection(function(err,connection){
-//     if (err) {      res.json({"code" : 100, "status" : "Error in connection database"});
-//       return;
-//     }
-  
-  
-//     connection.query(sql, function (err, result, fields) {
-//     // connection.release();
-//     if (!err) {
-//       console.log(result);
-//       res.send(
-//         "<a href='/'>Home</a>");
-      
-//       }
-//       else{
-//         res.send("not added, Name must be unique");
-//       }
-    
-//   });
 
-//   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
-//     return;     
-//     });
+ app.get('/process_get', function (req, res) {
+  // Prepare output in JSON format
+   sql="INSERT INTO `heroku_a8b56c41d8ac0e1`.`comapnies` (`company`,`address`,`revenue`,`phone`)VALUES('"+req.query.company+"','"+req.query.address+"','"+req.query.revenue+"','"+req.query.phone+"');  ";
+   con.getConnection(function(err,connection){
+    if (err) { res.json({"code" : 100, "status" : "Error in connection database"});
+      return;
+    }  
+    connection.query(sql, function (err, result, fields) {
+    if (!err) {
+      console.log(result);
+      res.send("added");}
+      else{   res.send("not added, Name must be unique");   }    
+       });
+  connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
+    return;     
+    });
+   });  
+});
 
-//    });
-  
-// })
-// .listen(PORT, () => console.log(`Listening on0 ${ PORT }`))
 
 
 

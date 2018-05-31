@@ -1,18 +1,46 @@
-<!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid bg-grey"><br>
+<div  id="test" >
+    
+
+  <div id="bodyDiv"  >
+
+ <div id="contact" class="container-fluid bg-grey"><br>
   <h2 class="text-center">CONTACT</h2>
   <div class="row">
     <div class="col-sm-5">
      
-      <p><span class="glyphicon glyphicon-map-marker"></span> {{province}}, CANADA</p>
-      <p><span class="glyphicon glyphicon-phone"></span> <a href="tel:{{tel}}">{{tel}}</a></p>
-      <p><span class="glyphicon glyphicon-envelope"></span> avneet_kochhar0173@hotmail.com</p>
-<!-- <p><span class="glyphicon glyphicon-earphone"></span>gurvinderptk</p> -->
+       
     </div>
     <div class="col-sm-7 slideanim iframContainer" >
     
-      <iframe id="myiframe" scrolling="no" width="100%" height="315" src="https://singhavneet.000webhostapp.com/" frameborder="0" allowfullscreen></iframe>
+      <!-- <iframe id="myiframe" scrolling="no" width="100%" height="315" src="https://singhavneet.000webhostapp.com/" frameborder="0" allowfullscreen></iframe> -->
+      <div class="" id="login-modal"  >
+    	  <div class="">
+				<div class="loginmodal-container">
+					<h1>Create New Company {{company}}</h1><br>
+				  <form action = "/process_get" method = "GET">
+					<input type="text" [(ngModel)]="company" name="company" placeholder="Name:">
+          <input type="text"  [(ngModel)]="address" name="address" placeholder="Address:">
+          <input type="text"  [(ngModel)]="revenue" name="revenue" placeholder="Revenue:">
+					<input type="text"  [(ngModel)]="phone" name="phone" placeholder="Phone:">
+					<input type="submit" name="Save" (click)="onPost()" class="login loginmodal-submit" value="Save">
+				  </form>
+					
+				  <div class="login-help">
+					<a href="#">Register</a> - <a href="#">Forgot Password</a>
+				  </div>
+				</div>
+			</div>
+		  </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+</div>
+
+</div>
+
 
