@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppService} from './app.service';
+// import {AppService} from './app.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,17 +7,17 @@ import {AppService} from './app.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _appService: AppService) { }
-
-  ngOnInit() {
-    // var el = document.getElementById('contact');
-    this._appService.sayHello()
-    .subscribe(
-    result => {
-      alert(
-        JSON.stringify(result));   
+  // constructor(private _appService: AppService) { }
+  ngOnInit() {}
+//   ngOnInit() {
+//     // var el = document.getElementById('contact');
+//     this._appService.sayHello()
+//     .subscribe(
+//     result => {
+//       alert(
+//         JSON.stringify(result));   
      
-    }
-    );
-}
+//     }
+//     );
+// }
 }
