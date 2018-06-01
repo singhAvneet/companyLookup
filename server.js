@@ -5,16 +5,11 @@ const app = express();
 var mysql = require('mysql');
 var sql;
 var con = mysql.createPool({
-  //mysql://b1ccaab44f967c:5b58fe31@us-cdbr-iron-east-04.cleardb.net/heroku_a8b56c41d8ac0e1?reconnect=true
-  connectionLimit : 100, //important
-  // host: "us-cdbr-iron-east-04.cleardb.net",
-  host:"us-cdbr-iron-east-04.cleardb.net",
-  // user: "b4a0c25955550e",
-  user:"b1ccaab44f967c",
-  // password: "7e427aa6",
-  password:"5b58fe31",
-  // database: "heroku_9473040638a9d16",
-  database:"heroku_a8b56c41d8ac0e1",
+   connectionLimit : 100, //important
+    host:"us-cdbr-iron-east-04.cleardb.net",
+    user:"b1ccaab44f967c",
+   password:"5b58fe31",
+    database:"heroku_a8b56c41d8ac0e1",
   debug    :  false
 });
 // Serve only the static files form the dist directory
@@ -89,7 +84,7 @@ app.get('/delete_employee', function (req, res) {
     connection.query(sql, function (err, result, fields) {
     if (!err) {
       console.log(result);
-      res.send("added");}
+      res.send(result);}
       else{   res.send("not added, Name must be unique");   }    
        });
   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
@@ -108,7 +103,7 @@ app.get('/process_employee', function (req, res) {
     connection.query(sql, function (err, result, fields) {
     if (!err) {
       console.log(result);
-      res.send("added");}
+      res.send(result);}
       else{   res.send("not added, Name must be unique "+err);   }    
        });
   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
@@ -119,15 +114,15 @@ app.get('/process_employee', function (req, res) {
 //******************************************************************************************* */
 app.get('/update_get', function (req, res) {
   // Prepare output in JSON format
-   sql="UPDATE `heroku_a8b56c41d8ac0e1`.`comapnies` SET `company`='"+req.query.company+"',`address`='"+req.query.address+"',`revenue`='"+req.query.revenue+"',`phone`='"+req.query.company+"' WHERE `id`='"+req.query.id+"'"; 
+   sql="UPDATE `heroku_a8b56c41d8ac0e1`.`comapnies` SET `company`='"+req.query.company+"',`address`='"+req.query.address+"',`revenue`='"+req.query.revenue+"',`phone`='"+req.query.phone+"' WHERE `id`='"+req.query.id+"'"; 
    con.getConnection(function(err,connection){
     if (err) { res.json({"code" : 100, "status" : "Error in connection database"});
       return;
     }  
     connection.query(sql, function (err, result, fields) {
     if (!err) {
-      console.log(result);
-      res.send("updated");}
+      res.send(result);
+     }
       else{   res.send("not added, Name must be unique: "+err);   }    
        });
   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
@@ -146,7 +141,7 @@ app.get('/update_employee', function (req, res) {
     connection.query(sql, function (err, result, fields) {
     if (!err) {
       console.log(result);
-      res.send("updated");}
+      res.send(result);}
       else{   res.send("not added, Name must be unique: "+err);   }    
        });
   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});

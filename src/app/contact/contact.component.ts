@@ -9,6 +9,7 @@ import { AppService } from '../app.service';
 })
 export class ContactComponent implements OnInit { 
   @Output() tabSelected: EventEmitter<any> = new EventEmitter();
+  result:string='';
 url:string='';isRequired:boolean=true;
 action:string='add';
 companies: Array<any>= [] ;
@@ -26,23 +27,29 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
     this.url = '/process_company?company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
 
     this._appService.sayHello(this.url).subscribe(
-      result => { alert(JSON.stringify(result)); }
+      result => { 
+        if(result.affectedRows==1)
+        this.result="Sucessfully Created"
+        else
+        this.result="Failed to Create due to :"+JSON.stringify(result)
+       }
       );
   }
-
-  removeAttribut(row:string){  
-    this.isRequired=false;
-    }
-
-    onUpdate(){    
+ onUpdate(){    
       this.url = '/update_get?id='+this.id+'&company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
       this._appService.sayHello(this.url).subscribe(
-        result => { alert(JSON.stringify(result)); }
+        result => {
+          if(result.affectedRows==1)
+          this.result="Sucessfully Updated"
+          else
+          this.result="Failed to Update due to :"+JSON.stringify(result)
+         }
         ); 
         this.showList="true";
       }
 
     editRecords(num:number){
+      this.result='';
       this.showList="false";
       this.company=this.companies[num].company;
       this.address=this.companies[num].address;
