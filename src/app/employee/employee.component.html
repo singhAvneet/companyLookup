@@ -1,0 +1,87 @@
+<div  id="test" >
+    
+
+    <div id="bodyDiv"  >
+  
+   <div id="contact" class="container-fluid bg-grey"><br>
+  
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="container">
+                <div class="row">
+                <br>
+                <div class="col-sm-12">
+                    
+                          <div class="panel panel-primary">
+                            <div class="panel-heading">Employees</div>
+                            <select class="form-control form-control-lg" name="selectedCompany" [(ngModel)]="selectedCompany"
+                                (change)="listUser()"> 
+                                <option *ngFor="let company of companies" 
+                                  [ngValue]="company" >{{company.company}} </option>               
+                            </select>
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>Name</th><th>Address</th>	<th>Company</th><th>CompanyID</th><th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let emp of employees,let i=index">
+                                  <td ><p  class="row{{i}}" id="{{emp.naming}}" class="form-control" >{{emp.naming}}</td>
+                                  <td ><p  class="row{{i}}" id="{{emp.address}}" class="form-control" >{{emp.address}}</p></td>
+                                  <td ><p  class="row{{i}}" id="{{emp.company}}" class="form-control" >{{emp.company}}</p></td>
+                                  <td ><p  class="row{{i}}" id="{{emp.companyid}}" class="form-control" >{{emp.companyid}}</p></td>
+                                  
+                                  <td><a (click)="editRecords(i)">update</a></td>
+                                  <td><a (click)="deleteRecords(i)">delete</a></td>            
+            
+                                </tr>											
+                              
+                              </tbody>
+                            </table>
+                          </div>
+                        </div> 
+                      
+                        </div>
+                        </div> 
+        </div>
+      <div class="col-sm-4 slideanim iframContainer" >
+      
+        <!-- <iframe id="myiframe" scrolling="no" width="100%" height="315" src="https://singhavneet.000webhostapp.com/" frameborder="0" allowfullscreen></iframe> -->
+        <div class="" id="login-modal"  >
+          <div class="">
+          <div class="loginmodal-container">
+            <h1>Create New Employee</h1><br>
+            <form action = "/process_get" method = "GET">
+            <input type="text" [(ngModel)]="naming" name="naming" placeholder="Name:">
+            <input type="text"  [(ngModel)]="address" name="address" placeholder="Address:">            
+            <select class="form-control form-control-lg" #selectElem (change)="setNewCompany(selectElem.value)">
+                <option *ngFor="let company of companies,let i=index" 
+                  [value]="i">{{company.company}}</option>               
+            </select>
+            <!-- value="{{i}}" -->
+            <input type="submit" *ngIf="action ==='add'" (click)="onPost()" class="login loginmodal-submit" value="Save">
+            <input type="submit" *ngIf="action ==='update'" (click)="onUpdate()" class="login loginmodal-submit" value="Update">
+    
+          </form>
+            
+            <div class="login-help">
+            <a href="#">Register</a> - <a href="#">Forgot Password</a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  </div>
+  
+  </div>
+  
+  
+  

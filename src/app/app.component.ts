@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
 tabSelected='contact';
 onNavigate(tab:string){
-  
+ 
 this.tabSelected=tab;
   }
 

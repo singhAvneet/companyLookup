@@ -10,6 +10,8 @@ import { AppService } from './app.service';
 
 import { ContactComponent } from './contact/contact.component';
 import { MenuComponent } from './menu/menu.component';
+import { EmployeeComponent } from './employee/employee.component';
+
 
 
 
@@ -21,6 +23,8 @@ import { MenuComponent } from './menu/menu.component';
     ContactComponent,
 
     MenuComponent,
+
+    EmployeeComponent,
 
   ],
   imports: [
