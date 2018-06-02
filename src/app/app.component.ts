@@ -26,6 +26,11 @@ onNavigate(tab:string){
     result => {      this.companies=result;     }
     );     
     }
+    // if(tab==="newemployee"){
+    //   this._appService.sayHello("/list_company").subscribe(
+    //   result => {      this.companies=result;     }
+    //   );     
+    //   }
 
   this.tabSelected=tab;
   }

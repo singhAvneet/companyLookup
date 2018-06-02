@@ -80,14 +80,19 @@ deleteRecords(emp:number){
 }
 onUpdate(){ 
   this.action="add";
-  this.url = '/update_employee?id='+this.id+'&naming='+this.naming+'&address='+this.address+'&companyid='+this.companyid+'&company='+this.company;
+  this.url = '/update_employee?id='+this.employees[this.index].id+'&naming='+this.employees[this.index].naming+'&address='+this.employees[this.index].address+'&companyid='+this.companyid+'&company='+this.company;
   this._appService.sayHello(this.url).subscribe( result => {
     if(result.affectedRows==1)
     this.result="Sucessfully Updated"
     else
     this.result="Failed to Update due to :"+JSON.stringify(result)
    }  );  
-   window.scrollTo({ top: -1000, behavior: "smooth" }); 
+   window.scrollTo({ top: -1000, behavior: "smooth" });
+   this.id=this.employees[this.index].id;
+  // this.companyid=this.employees[this.index].companyid;
+  this.naming=this.employees[this.index].naming;
+  this.address=this.employees[this.index].address;
+  // this.company=this.employees[this.index].company; 
   }
 
 }

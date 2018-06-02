@@ -9,7 +9,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit { 
-  @Output() tabSelected: EventEmitter<any> = new EventEmitter();
+
   @Input() companies: Array<any>;
   result:string='';
 url:string='';isRequired:boolean=true;
@@ -67,10 +67,7 @@ index:number;
       this.index=num;
     //   this.showList="false";
       this.company=this.companies[num].company;
-    //   this.address=this.companies[num].address;
-    //   this.phone=this.companies[num].phone;
-    //   this.revenue=this.companies[num].revenue;
-    //  this.id=this.companies[num].id;
+    
       
       window.scrollTo({ top: 1000, behavior: "smooth" });
         
