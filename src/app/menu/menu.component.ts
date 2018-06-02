@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
   }
 
   onClickLink(tabNAme){
-
+    this.closeNav();
     this.tabSelected.emit(tabNAme);
   }
    openNav() {

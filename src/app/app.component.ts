@@ -31,12 +31,7 @@ this.tabSelected=tab;
   }
 
  
-  onClickbody() {
-    var el = document.getElementById('myNavbar');
-    // var navEl = document.getElementById('navClass');
-    el.setAttribute("style", "display:none;");
 
-  }
 
 
 }

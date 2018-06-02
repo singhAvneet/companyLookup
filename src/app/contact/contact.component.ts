@@ -40,14 +40,24 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
       this.url = '/update_get?id='+this.id+'&company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
       this._appService.sayHello(this.url).subscribe(
         result => {
-          if(result.affectedRows==1)
-          this.result="Sucessfully Updated"
+          if(result.affectedRows==1){
+          this.result="Sucessfully Updated";
+          this.updateEmployees();
+          }
           else
-          this.result="Failed to Update due to :"+JSON.stringify(result)
+          this.result="Failed to Update due to :"+JSON.stringify(result);
+
          }
         ); 
         this.showList="true";
         window.scrollTo({ top: -1000, behavior: "smooth" });
+        
+      }
+      updateEmployees(){
+        this.url = '/sync_employee?company='+this.company+'&naming=&companyid='+this.id;
+        this._appService.sayHello(this.url).subscribe(
+          result => {    }
+          ); 
       }
 
     editRecords(num:number){
