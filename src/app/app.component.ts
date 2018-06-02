@@ -1,5 +1,7 @@
 import { Component,OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import {Observable} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import { AppService } from './app.service';
 
@@ -13,16 +15,7 @@ export class AppComponent implements OnInit {
   author='© 2018 by Avneet Singh. ';
   constructor(private _appService: AppService) { }
 
-  ngOnInit(): void {
-    
-    // this._appService.sayHello()
-    //   .subscribe(
-    //   result => {
-    //     alert(result.region_code);
-       
-    //   }
-    //   );
-  }
+  ngOnInit(): void {  }
 
 tabSelected='contact';
 companies: Array<any>= [] ;
@@ -33,16 +26,11 @@ onNavigate(tab:string){
     result => {      this.companies=result;     }
     );     
     }
-  // if(tab==="newemployee"){
-  //   this._appService.sayHello("/list_employee").subscribe(
-  //   result => {      this.employees=result;     }
-  //   );     
-  //   }
+
   this.tabSelected=tab;
   }
 
 
-
-
+ 
 
 }

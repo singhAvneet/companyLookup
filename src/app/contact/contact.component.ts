@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { AppService } from '../app.service';
 
 
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
