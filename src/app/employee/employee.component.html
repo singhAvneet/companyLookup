@@ -24,7 +24,7 @@
                             <table class="table table-bordered">
                               <thead>
                                 <tr>
-                                  <th>Name</th><th>Address</th>	<th>Company</th><th>CompanyID</th><th></th>
+                                  <th>Name</th><th>Address</th>	<th>Company</th><th>CompanyID</th><th>Update</th><th>Delete</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -34,8 +34,10 @@
                                   <td ><p  class="row{{i}}" id="{{emp.company}}" class="form-control" >{{emp.company}}</p></td>
                                   <td ><p  class="row{{i}}" id="{{emp.companyid}}" class="form-control" >{{emp.companyid}}</p></td>
                                   
-                                  <td><a (click)="editRecords(i)">update</a></td>
-                                  <td><a (click)="deleteRecords(i)">delete</a></td>            
+                                  <!-- <td><a (click)="editRecords(i)">update</a></td> -->
+                                  <td ><input  (click)="editRecords(i)" class="login-panel" value="Update" ></td>
+                                  <!-- <td><a (click)="deleteRecords(i)">delete</a></td>  -->
+                                  <td ><input  (click)="deleteRecords(i)" class="login-panel" value="Delete" ></td>           
             
                                 </tr>											
                               
@@ -47,7 +49,7 @@
                       
                         </div>
                         </div> 
-                        <h1>{{result}}</h1>
+                      
         </div>
       <div class="col-lg-4 col-sm-12 slideanim " >
       
@@ -56,7 +58,8 @@
           <div class="">
           <div class="loginmodal-container">
             <h1>Create New Employee</h1><br>
-            <form action = "/process_get" method = "GET">
+            <p>{{result}}</p>
+          <form *ngIf="action ==='add'" action = "/process_get" method = "GET">
             <input type="text" [(ngModel)]="naming" name="naming" placeholder="Name:">
             <input type="text"  [(ngModel)]="address" name="address" placeholder="Address:">            
             <select class="form-control form-control-lg" #selectElem (change)="setNewCompany(selectElem.value)">
@@ -65,10 +68,20 @@
             </select>
             <!-- value="{{i}}" -->
             <input type="submit" *ngIf="action ==='add'" (click)="onPost()" class="login loginmodal-submit" value="Save">
+            
+          </form>
+
+
+          <form *ngIf="action ==='update'" action = "/process_get" method = "GET">
+            <input type="text" [(ngModel)]="employees[index].naming" name="naming" placeholder="Name:">
+            <input type="text"  [(ngModel)]="employees[index].address" name="address" placeholder="Address:">            
+            <select class="form-control form-control-lg" #selectElem (change)="setNewCompany(selectElem.value)">
+                <option *ngFor="let company of companies,let i=index" 
+                  [value]="i">{{company.company}}</option>               
+            </select>
             <input type="submit" *ngIf="action ==='update'" (click)="onUpdate()" class="login loginmodal-submit" value="Update">
     
           </form>
-            
           </div>
         </div>
         </div>

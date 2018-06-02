@@ -13,54 +13,67 @@
 							<div class="col-sm-12">
 									
 												<div class="panel panel-primary">
-													<div class="panel-heading">Companies</div>
+													<div class="panel-heading">Companies
+															
+													</div>
 													<div class="table-responsive-xl">
 													<table class="table table-bordered">
 														<thead>
 															<tr>
-																<th >Company ID</th><th >Company</th>	
+																<th >ID</th><th >Company</th>	
 																<th >Address</th><th >Revenue</th><th>Phone</th>
-																<th ></th>
+																<th >Update</th>
 															</tr>
 														</thead>
 														<tbody>
 															<tr *ngFor="let company of companies,let i=index">
 																<td ><p  class="row{{i}}" id="{{company.id}}" class="form-control" >{{company.id}}</td>
-																<td ><p  class="row{{i}}" id="{{company.company}}" class="form-control" >{{company.company}}</p></td>
+																<td ><p  class="row{{i}}" id="{{companies.company}}" class="form-control" >{{company.company}}</p></td>
 																<td ><p  class="row{{i}}" id="{{company.address}}" class="form-control" >{{company.address}}</p></td>
 																<td ><p  class="row{{i}}" id="{{company.revenue}}" class="form-control" >{{company.revenue}}</p></td>
 																<td ><p  class="row{{i}}" id="{{company.phone}}" class="form-control" >{{company.phone}}</p></td>
-																<td><a (click)="editRecords(i)">update</a></td>
+																<!-- <td><a (click)="editRecords(i)">update</a></td> -->
+																<input  (click)="editRecords(i)" class="login-panel" value="Update">
+
 															</tr>											
-														
+													
 														</tbody>
 													</table>
+													
 												</div>
 											</div>
 											</div> 
 										
 											</div>
 											</div> 
-											<h1>{{result}}</h1>
+										
 			</div>
 			
     <div class="col-lg-4 col-sm-12 slideanim " >
     
-      <!-- <iframe id="myiframe" scrolling="no" width="100%" height="315" src="https://singhavneet.000webhostapp.com/" frameborder="0" allowfullscreen></iframe> -->
+      
       <div class="" id="login-modal"  >
     	  <div class="">
 				<div class="loginmodal-container">
 					<h1>Create New Company </h1><br>
-				  <form action = "/process_get" method = "GET">
+					<p>{{result}}</p>
+				  <form *ngIf="action ==='add'" action = "/process_get" method = "GET">
 					<input type="text" [(ngModel)]="company" name="company" placeholder="Name:">
-          <input type="text"  [(ngModel)]="address" name="address" placeholder="Address:">
-          <input type="text"  [(ngModel)]="revenue" name="revenue" placeholder="Revenue:">
+					<input type="text"  [(ngModel)]="address" name="address" placeholder="Address:">
+					<input type="text"  [(ngModel)]="revenue" name="revenue" placeholder="Revenue:">
 					<input type="text"  [(ngModel)]="phone" name="phone" placeholder="Phone:">
 					<input type="submit" *ngIf="action ==='add'" (click)="onPost()" class="login loginmodal-submit" value="Save">
-					<input type="submit" *ngIf="action ==='update'" (click)="onUpdate()" class="login loginmodal-submit" value="Update">
-	
-				</form>
-				
+					
+					</form>
+					<form *ngIf="action ==='update'" action = "/process_get" method = "GET">
+						<input type="text" [(ngModel)]="companies[index].company" name="company" placeholder="Name:">
+						<input type="text"  [(ngModel)]="companies[index].address" name="address" placeholder="Address:">
+						<input type="text"  [(ngModel)]="companies[index].revenue" name="revenue" placeholder="Revenue:">
+						<input type="text"  [(ngModel)]="companies[index].phone" name="phone" placeholder="Phone:">
+						
+						<input type="submit" *ngIf="action ==='update'" (click)="onUpdate()" class="login loginmodal-submit" value="Update">
+						</form>
+						
 				</div>
 			</div>
 		  </div>

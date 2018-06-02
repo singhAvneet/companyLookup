@@ -1,9 +1,9 @@
 
 
-<app-menu (tabSelected)="onNavigate($event)"></app-menu>
+<app-menu (tabSelected)="onNavigate($event)" ></app-menu>
 
 
-<app-contact *ngIf="tabSelected ==='newcompany'"></app-contact>
+<app-contact [companies]="companies" *ngIf="tabSelected ==='newcompany'"></app-contact>
 <app-employee *ngIf="tabSelected ==='newemployee'"></app-employee>
 
 

@@ -45,7 +45,8 @@ export class EmployeeComponent implements OnInit {
 setNewCompany(id: any): void {
   this.result='';
   this.companyid=this.companies[id].id;
-    this.company=this.companies[id].company;  
+    this.company=this.companies[id].company;
+    this.employees[this.index].company=this.company;
 }
 listUser(): void { 
   this.result=''; 
@@ -54,7 +55,9 @@ listUser(): void {
       result => { this.employees=result;    }
       );
 }
+index:number;
 editRecords(emp:number){
+  this.index=emp;
   this.result='';
   this.id=this.employees[emp].id;
   this.companyid=this.employees[emp].companyid;

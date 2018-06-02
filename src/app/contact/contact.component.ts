@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { AppService } from '../app.service';
 
 
@@ -9,19 +9,18 @@ import { AppService } from '../app.service';
 })
 export class ContactComponent implements OnInit { 
   @Output() tabSelected: EventEmitter<any> = new EventEmitter();
+  @Input() companies: Array<any>;
   result:string='';
 url:string='';isRequired:boolean=true;
 action:string='add';
-companies: Array<any>= [] ;
-showList:string="true";
+
 company:string='';address:string='';revenue:string='';phone:string='';id:number=0;
+
   constructor(private _appService: AppService) { }
 
   ngOnInit() {
-    var el = document.getElementById('contact');
-    this._appService.sayHello("/list_company").subscribe(
-    result => {      this.companies=result;      }
-    );
+    // this.editRecords(0);  
+    this.action="add"; 
   }
   onPost(){
     this.url = '/process_company?company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
@@ -37,38 +36,41 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
       window.scrollTo({ top: -1000, behavior: "smooth" });
   }
  onUpdate(){    
-      this.url = '/update_get?id='+this.id+'&company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
+      this.url = '/update_get?id='+this.companies[this.index].id+'&company='+this.companies[this.index].company+'&address='+this.companies[this.index].address+'&revenue='+this.companies[this.index].revenue+'&phone='+this.companies[this.index].phone;
       this._appService.sayHello(this.url).subscribe(
         result => {
           if(result.affectedRows==1){
           this.result="Sucessfully Updated";
-          this.updateEmployees();
+          if(this.company!=this.companies[this.index].company)
+           this.updateEmployees();
           }
           else
           this.result="Failed to Update due to :"+JSON.stringify(result);
-
+          this.company='';
          }
-        ); 
-        this.showList="true";
+        );        
         window.scrollTo({ top: -1000, behavior: "smooth" });
-        
+        this.action="add";
       }
       updateEmployees(){
-        this.url = '/sync_employee?company='+this.company+'&naming=&companyid='+this.id;
+        this.url = '/sync_employee?company='+this.companies[this.index].company+'&naming=&companyid='+this.companies[this.index].id;
         this._appService.sayHello(this.url).subscribe(
           result => {    }
           ); 
+          this.action="add";
       }
-
+index:number;
     editRecords(num:number){
-      this.result='';
-      this.showList="false";
-      this.company=this.companies[num].company;
-      this.address=this.companies[num].address;
-      this.phone=this.companies[num].phone;
-      this.revenue=this.companies[num].revenue;
-     this.id=this.companies[num].id;
       this.action="update";
+      this.result='';//displays message on the page eg: updated sucessfully, etc...
+      this.index=num;
+    //   this.showList="false";
+      this.company=this.companies[num].company;
+    //   this.address=this.companies[num].address;
+    //   this.phone=this.companies[num].phone;
+    //   this.revenue=this.companies[num].revenue;
+    //  this.id=this.companies[num].id;
+      
       window.scrollTo({ top: 1000, behavior: "smooth" });
         
     } 

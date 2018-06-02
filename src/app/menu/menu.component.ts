@@ -7,6 +7,7 @@ import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   @Output() tabSelected: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
   }
 
   onClickLink(tabNAme){
-    this.closeNav();
+    this.closeNav();   
     this.tabSelected.emit(tabNAme);
   }
    openNav() {

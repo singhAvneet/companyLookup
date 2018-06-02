@@ -25,12 +25,23 @@ export class AppComponent implements OnInit {
   }
 
 tabSelected='contact';
-onNavigate(tab:string){
- 
-this.tabSelected=tab;
+companies: Array<any>= [] ;
+// employees: Array<any>= [] ;
+onNavigate(tab:string){ 
+  if(tab==="newcompany"){
+    this._appService.sayHello("/list_company").subscribe(
+    result => {      this.companies=result;     }
+    );     
+    }
+  // if(tab==="newemployee"){
+  //   this._appService.sayHello("/list_employee").subscribe(
+  //   result => {      this.employees=result;     }
+  //   );     
+  //   }
+  this.tabSelected=tab;
   }
 
- 
+
 
 
 
