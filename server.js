@@ -15,9 +15,8 @@ var con = mysql.createPool({
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist'));
 
-app.get('/', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/index.html'));
+app.get('/', function(req,res) {    
+  res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
@@ -135,21 +134,23 @@ app.get('/update_employee', function (req, res) {
   // Prepare output in JSON format
    sql="UPDATE `heroku_a8b56c41d8ac0e1`.`employee` SET `naming`='"+req.query.naming+"',`address`='"+req.query.address+"',`company`='"+req.query.company+"',`companyid`='"+req.query.companyid+"' WHERE `id`='"+req.query.id+"'"; 
    con.getConnection(function(err,connection){
+
     if (err) { res.json({"code" : 100, "status" : "Error in connection database"});
-      return;
-    }  
-    connection.query(sql, function (err, result, fields) {
-    if (!err) {
-      console.log(result);
-      res.send(result);}
-      else{   res.send("not added, Name must be unique: "+err);   }    
-       });
+    return;
+  }  
+  connection.query(sql, function (err, result, fields) {
+  if (!err) {
+    console.log(result);
+    res.send(result);}
+    else{   res.send("not added, Name must be unique: "+err);   }    
+     });
   connection.on('error', function(err) {   res.json({"code" : 100, "status" : "Error in connection database"});
-    return;     
-    });
+  return;     
+  });
+
+
    });  
 });
-
 
 
 

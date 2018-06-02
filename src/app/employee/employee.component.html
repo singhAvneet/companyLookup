@@ -3,14 +3,15 @@
 
     <div id="bodyDiv"  >
   
-   <div id="contact" class="container-fluid bg-grey"><br>
+   <div id="contact" class=" bg-grey"><br>
+    <!-- container-fluid -->
   
-    <div class="row">
-        <div class="col-sm-8">
+    
+        <div class="col-lg-8">
             <div class="container">
                 <div class="row">
                 <br>
-                <div class="col-sm-12">
+                <div class="col-lg-12">
                     
                           <div class="panel panel-primary">
                             <div class="panel-heading">Employees</div>
@@ -19,6 +20,7 @@
                                 <option *ngFor="let company of companies" 
                                   [ngValue]="company" >{{company.company}} </option>               
                             </select>
+                            <div class="table-responsive-xl">
                             <table class="table table-bordered">
                               <thead>
                                 <tr>
@@ -40,12 +42,14 @@
                               </tbody>
                             </table>
                           </div>
+                          </div>
                         </div> 
                       
                         </div>
                         </div> 
+                        <h1>{{result}}</h1>
         </div>
-      <div class="col-sm-4 slideanim iframContainer" >
+      <div class="col-lg-4 col-sm-12 slideanim " >
       
         <!-- <iframe id="myiframe" scrolling="no" width="100%" height="315" src="https://singhavneet.000webhostapp.com/" frameborder="0" allowfullscreen></iframe> -->
         <div class="" id="login-modal"  >
@@ -69,17 +73,11 @@
         </div>
         </div>
       </div>
-    </div>
+  
 
-	<h1>{{result}}</h1>
-  </div>
+  </div> 
   
-  
-  
-  
-  
-  </div>
-  
+  </div>  
   </div>
   
   

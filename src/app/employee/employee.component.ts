@@ -39,6 +39,7 @@ export class EmployeeComponent implements OnInit {
         this.result="Failed to Add due to :"+JSON.stringify(result)
         }
       );
+      window.scrollTo({ top: -1000, behavior: "smooth" });
   }
 
 setNewCompany(id: any): void {
@@ -60,7 +61,8 @@ editRecords(emp:number){
   this.naming=this.employees[emp].naming;
   this.address=this.employees[emp].address;
   this.company=this.employees[emp].company;
-   this.action="update";    
+   this.action="update";  
+   window.scrollTo({ top: 1000, behavior: "smooth" });  
 }
 deleteRecords(emp:number){
   this.url = '/delete_employee?id='+this.employees[emp].id;
@@ -81,7 +83,8 @@ onUpdate(){
     this.result="Sucessfully Updated"
     else
     this.result="Failed to Update due to :"+JSON.stringify(result)
-   }  );   
+   }  );  
+   window.scrollTo({ top: -1000, behavior: "smooth" }); 
   }
 
 }

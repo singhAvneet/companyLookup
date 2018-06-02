@@ -34,6 +34,7 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
         this.result="Failed to Create due to :"+JSON.stringify(result)
        }
       );
+      window.scrollTo({ top: -1000, behavior: "smooth" });
   }
  onUpdate(){    
       this.url = '/update_get?id='+this.id+'&company='+this.company+'&address='+this.address+'&revenue='+this.revenue+'&phone='+this.phone;
@@ -46,6 +47,7 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
          }
         ); 
         this.showList="true";
+        window.scrollTo({ top: -1000, behavior: "smooth" });
       }
 
     editRecords(num:number){
@@ -57,6 +59,7 @@ company:string='';address:string='';revenue:string='';phone:string='';id:number=
       this.revenue=this.companies[num].revenue;
      this.id=this.companies[num].id;
       this.action="update";
+      window.scrollTo({ top: 1000, behavior: "smooth" });
         
     } 
   
